@@ -1,0 +1,83 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: aliceblue;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+      color : #fee715ff;
+      font-family:cursive; 
+      letter-spacing: -3px;
+      cursor:default ;
+      padding: 15px;
+  }
+  .sidebar a:hover {
+      text-decoration: none;
+  }
+  .sidebar a.options{
+      padding: 10px;
+  }
+  
+  .sidebar a.options:hover{
+      background-color: #fee715ff;
+      color: black; 
+  }
+  
+  
+  div.content {
+    margin-left: 200px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 100px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+  
+  .a-btn{
+      margin:5px;
+      color:black;
+  }
+  
+  .cards{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    overflow: hidden;
+  }
+  
+  #settothis{
+    background-image: url("/assets/back2.svg"); /* You must set a specified height */
+    /*background-color:#ffd11a;*/
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 760px;
+    height:100%;
+  }
+
+  button{
+    width: 40%;
+    margin: 10px;
+  }

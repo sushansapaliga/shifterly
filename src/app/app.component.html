@@ -1,0 +1,135 @@
+<div class="sidebar bg-dark">
+  <a class="active" href="#"><img src="/assets/logo.svg" alt="" width="30px" height="30px" style="display: inline; margin-top: -12px;"> &nbsp;&nbsp;<h2 style="display: inline; ">Shifterly</h2></a>
+  <a class="options text-center" href="#" (click)="change_mode('home')">  <fa-icon [icon]="faHome"></fa-icon>&nbsp;&nbsp;Home </a>
+  <a class="options text-center" href="#" (click)="change_mode('del')"><fa-icon [icon]="faTruck"></fa-icon>&nbsp;&nbsp;Orders</a>
+  <a class="options text-center" href="#" (click)="change_mode('his')"><fa-icon [icon]="faHistory"></fa-icon>&nbsp;&nbsp;History</a>
+</div>
+
+<div class="content">
+  <div id="settothis">
+
+    <div class="loading" *ngIf="(mode==0)">
+
+      <div class="container">
+          <br><br>
+          <div class="rounded" style="background-color:black;">
+          <div style="margin-top:0%;color:white;padding:2%" >
+            <!---Span for loading-->
+           <img src="assets/loading.svg" style="margin-top: -1%;" width="15%" height="15% "><h2 style="display: inline;">Loading Order Details</h2>
+          </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="home" *ngIf="(mode==1)">
+          <div class="container">
+          <br><br>
+          <div class="rounded" style="background-color:black;">
+          <div style="margin-top:0%;color:white;padding:2%" >
+          <div style="font-size:270% ;"> <b>Delivery Status </b></div>
+
+          <ul *ngFor="let book of items " >
+          <div class="container bg-dark cards rounded " *ngIf="book.status=='Accepted'">
+            <div class="row">
+            <div class="col-sm-6">
+            <h4 style="color:yellow"><b> {{ book.date | date:'MMMM d,y' }} </b> </h4>
+            <h5 style="color:yellow">From: {{ book.src }} </h5>
+            <h5 style="color:yellow">To: {{ book.dest }}</h5>
+            Contact : {{ book.phone}} <br>
+            Truck: {{ book.vehicle }} <br>
+            Cost: {{ book.cost | currency:'INR' }} <br>
+            Goods-Type : {{ book.goods}} <br>
+
+          </div>
+          <div class="col-sm-4">
+              <button class="btn btn-success" (click)="updateBook($event,book,'Successful')"> <fa-icon [icon]="faCheckCircle"></fa-icon> &nbsp;Delivered</button>
+          </div>
+          </div>
+          </div>
+        </ul>
+
+
+
+          </div>
+          
+          
+          
+          </div>
+          <br>
+          </div>
+        </div>
+
+
+        <div class="delivery" *ngIf="(mode==2)">
+
+            <div class="container">
+                <br><br>
+                <div class="rounded" style="background-color:black;">
+                <div style="margin-top:0%;color:white;padding:2%" >
+                
+                <div style="font-size:270% ;"> <b>Order Confirmation </b></div>
+                
+                <ul *ngFor="let book of items " >
+                <div class="container bg-dark cards rounded" *ngIf="book.status=='Booked'">
+                    <div class="row">
+                    <div class="col-sm-6">
+                            <h4 style="color:yellow"><b> {{ book.date | date:'MMMM d,y' }} </b> </h4>
+                            <h5 style="color:yellow">From: {{ book.src }} </h5>
+                            <h5 style="color:yellow">To: {{ book.dest }}</h5>
+                            Contact : {{ book.phone}} <br>
+                            Truck: {{ book.vehicle }} <br>
+                            Cost: {{ book.cost | currency:'INR' }} <br>
+                            Goods-Type : {{ book.goods}} <br>
+                
+                  </div>
+                  <div class="col-sm-4">
+                      <button class="btn btn-success"  (click)="updateBook($event,book,'Accepted')"><fa-icon [icon]="faCheckCircle"></fa-icon>&nbsp;Approve</button><br>
+                      <button class="btn btn-danger" (click)="updateBook($event,book,'Rejected')"><fa-icon [icon]="faTimesCircle"></fa-icon>&nbsp;Reject</button>
+                  </div>
+                  </div>
+                  </div>
+                </ul>
+                </div>
+                
+                </div>
+                <br>
+                </div>
+        </div>
+
+
+
+
+        <div class="history" *ngIf="(mode==3)">
+
+            <div class="container">
+                <br><br>
+                <div class="rounded" style="background-color:black;">
+                <div style="margin-top:0%;color:white;padding:2%" >
+                
+                <div style="font-size:270% ;"> <b>Order History </b></div>
+                
+                <ul *ngFor="let book of items " >
+                <div class="container bg-dark cards rounded" *ngIf="book.status=='Successful'" >
+                    <h4 style="color:yellow"><b> {{ book.date | date:'MMMM d,y' }} </b> </h4>
+                    <h5 style="color:yellow">From: {{ book.src }} </h5>
+                    <h5 style="color:yellow">To: {{ book.dest }}</h5>
+                    Contact : {{ book.phone}} <br>
+                    Truck: {{ book.vehicle }} <br>
+                    Cost: {{ book.cost | currency:'INR' }} <br>
+                    Goods-Type : {{ book.goods}} <br>
+
+                  </div>
+                </ul>
+                </div>
+                </div>
+                <br>
+                </div>
+        </div>
+
+
+
+          </div>
+</div>
+
+
+
