@@ -6,3 +6,6 @@
 ## requirements
  1. Font awesome
  2. Google FireStore 
+ 
+ 
+Note: replace your firebase api or config file at the path "src/environment/environment.prod.ts" and "src/environment/environment.ts"
